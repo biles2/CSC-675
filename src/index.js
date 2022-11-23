@@ -3,7 +3,6 @@
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
-const { token } = require('../config.json');
 const { con } = require('./databases/dataSource');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -44,4 +43,4 @@ con.connect((err) => {
   console.log('Connected to database');
 });
 
-client.login(token);
+client.login(process.env.TOKEN);

@@ -5,7 +5,6 @@ const path = require('node:path');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord.js');
 const { exit } = require('node:process');
-const { clientId, guildId, token } = require('../config.json');
 
 const commands = [];
 const commandsPath = path.join(__dirname, 'commands');
@@ -17,11 +16,14 @@ commandFiles.forEach((file) => {
   commands.push(command.data.toJSON());
 });
 
-const rest = new REST({ version: '10' }).setToken(token);
+const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
 const deploy = async () => {
   try {
-    await rest.put(Routes.applicationCommands(clientId, guildId), { body: commands });
+    await rest.put(
+      Routes.applicationCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
+      { body: commands },
+    );
     console.log('Command succesfully added');
     exit(0);
   } catch (err) {

@@ -1,14 +1,11 @@
 const mysql = require('mysql2');
-const {
-  host, database, password, port, user,
-} = require('../../config.json');
 
 const con = mysql.createConnection({
-  host: host || 'localhost',
-  database: database || 'db',
-  port: port || '3306',
-  password: password || 'password',
-  user: user || 'root',
+  host: process.env.HOST || 'localhost',
+  database: process.env.DATABASE || 'db',
+  port: process.env.PORT || '3306',
+  password: process.env.PASSWORD || 'password',
+  user: process.env.USER || 'root',
 });
 
 module.exports = { con };
