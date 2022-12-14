@@ -1,11 +1,12 @@
+require('dotenv').config();
 const mysql = require('mysql2');
 
 const con = mysql.createConnection({
-  host: process.env.HOST || 'localhost',
-  database: process.env.DATABASE || 'db',
-  port: process.env.PORT || '3306',
-  password: process.env.PASSWORD || 'password',
-  user: process.env.USER || 'root',
+  host: 'db.c4jmyvclunpb.us-east-1.rds.amazonaws.com',
+  database: 'ArtGalleryDB',
+  port: '3306',
+  password: 'J3c6BjmASUbgzRSixFC3',
+  user: 'admin',
 });
 
 module.exports = { con };

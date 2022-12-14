@@ -19,6 +19,7 @@ commandFiles.forEach((file) => {
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
 const deploy = async () => {
+  console.log(commands);
   try {
     await rest.put(
       Routes.applicationCommands(process.env.CLIENT_ID, process.env.GUILD_ID),

@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
 /* eslint-disable import/no-dynamic-require */
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
@@ -31,14 +32,13 @@ client.on('interactionCreate', async (interaction) => {
   try {
     await command.execute(interaction);
   } catch (error) {
-    console.error(error);
-    await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+    await interaction.reply({ content: 'There is an error while executing this command!', ephemeral: true });
   }
 });
 
 con.connect((err) => {
   if (err !== null) {
-    console.error(err);
+    throw Error(err);
   }
   console.log('Connected to database');
 });
