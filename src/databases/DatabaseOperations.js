@@ -86,14 +86,12 @@ class DatabaseOperations {
     const sqlVal = QueryBuilder.build.filter(this.table, data);
     this.query = sqlVal.query;
     this.values = sqlVal.val;
-    console.log(this.query, this.values);
 
     return new Promise((resolve, reject) => {
       con.execute(this.query, this.values, (err, result) => {
         if (err) {
           reject(err);
         } else {
-          console.log(result);
           resolve(result);
         }
       });

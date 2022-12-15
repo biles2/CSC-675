@@ -6,7 +6,7 @@ const con = mysql.createConnection({
   database: process.env.DATABASE || '',
   port: process.env.PORT || '',
   password: process.env.PASSWORD || '',
-  user: process.env.USER || 'admin',
+  user: process.env.USERNAME || 'admin',
 });
 
 module.exports = { con };
